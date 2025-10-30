@@ -40,7 +40,6 @@ def soma_mat(mA, mB):
 		return soma
 
 	else:
-		print("As matrizes são inválidas para a operação.")
 		return None
 
 def mult_mat(mA, mB): 
@@ -63,8 +62,7 @@ def mult_mat(mA, mB):
 
 		return mult
 
-	else: 
-		print("As matrizes são inválidas para a operação.")
+	else:
 		return None
 
 def vezes_k(m, k):
@@ -101,22 +99,47 @@ def transp_mat(m):
 #inserir os valores da matriz nos seus lugares
 	for linha in m:
 		for coluna in linha:
+			trans[linha][coluna] = m[coluna][linha]
+
+	return trans
 
 
 def get_tamlins(m):
-#retorna a quantidade de linhas da mat
-	pass
+
+	return len[m]
 
 def get_tamcols(m):
 #retorna a quantidade de colunas da mat
-	pass
+	return len(m[0])
 
 def salva_mat(m, filename):
-	pass
+
+	lin = len(m[0])
+	col = len(m)
+
+
+	arq = open(filename, 'w')
+
+	for linhas in range(lin):
+		for colunas in range(col):
+			arq.write('%5d' % m[linhas][colunas], ' ', end='')
+		arq.write('\n')
+	arq.close()
+
 
 def carrega_mat(filename):
-	pass
+	arq.open(filename, 'r')
+
+	linhas = arq.readlines()
+	mat = linhas.strip().split(" ")
+
+	return mat
+
+def setElem(m, valor, linh, col):
+
+	m[linh][col] = valor
+
+	return m
 
 
-#setElem
 
