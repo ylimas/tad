@@ -22,7 +22,7 @@ def print_mat(m):
 
 	for linhas in range(lin):
 		for colunas in range(col):
-			print('%3d' % m[linhas][colunas], ' ', end='')
+			print('%3d' % int(m[linhas][colunas]), ' ', end='')
 		print()
 
 #OK!
@@ -121,7 +121,7 @@ def get_tamcols(m):
 
 	return len(m[0])
 
-
+#OK!
 def salva_mat(m, filename):
 
 	lin = len(m)
@@ -138,15 +138,18 @@ def salva_mat(m, filename):
 		arq.write('\n')
 	arq.close()
 
-
+#OK!
 def carrega_mat(filename):
 	arq = open(filename, 'r')
 
-	linhas = arq.readlines()
+	linha = arq.readline()
 	mat = []
-	for linha in linhas:
-		lin = linha.strip().split(" ")
-		mat.append(lin)
+
+	while linha != '':
+		linha = linha.split()
+		mat.append(linha)
+		linha = arq.readline()
+
 
 	arq.close()
 	return mat
