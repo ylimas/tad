@@ -1,5 +1,6 @@
 import random
 
+#OK!
 def new_mat(lins, cols):
 	
 	mat = []
@@ -7,22 +8,31 @@ def new_mat(lins, cols):
 	for linhas in range(lins):
 		linha = []
 		for colunas in range(cols):
-			linha.append(random.radint(1, 10))
+			linha.append(random.randint(1, 9))
 
 		mat.append(linha)
 
 	return mat
 
+#OK!
 def print_mat(m):
 
-	lin = len(m[0])
-	col = len(m)
+	lin = len(m)
+	col = len(m[0])
+
 	for linhas in range(lin):
 		for colunas in range(col):
-			print('%5d' % m[linhas][colunas], ' ', end='')
+			print('%3d' % m[linhas][colunas], ' ', end='')
 		print()
 
+#OK!
+def setElem(m, valor, linh, col):
 
+	m[linh][col] = valor
+
+	return m
+
+#OK!
 def soma_mat(mA, mB):
 	if len(mA) == len(mA[0]) and len(mB) == len(mB[0]):
 		lst = []
@@ -42,6 +52,7 @@ def soma_mat(mA, mB):
 	else:
 		return None
 
+#OK!
 def mult_mat(mA, mB): 
 	
 	if len(mA) == len(mA[0]) and len(mB) == len(mB[0]):
@@ -65,15 +76,16 @@ def mult_mat(mA, mB):
 	else:
 		return None
 
+#OK!
 def vezes_k(m, k):
 	
 	lst = []
 	num = 0
 	mult = []
 
-	for linha in len(m):
-		for coluna in len(m[0]):
-			num = mA[linha][coluna] * k
+	for linha in range(len(m)):
+		for coluna in range(len(m[0])):
+			num = m[linha][coluna] * k
 			lst.append(num)
 				
 		mult.append(lst)
@@ -82,64 +94,61 @@ def vezes_k(m, k):
 
 	return mult
 
+#OK!
 def transp_mat(m):
 	
-	lins = len(m)
-	cols = len(m[0])
+	lins = len(m) #5
+	cols = len(m[0]) #2
 
-#criar uma nova matriz inversa vazia
-	
 	trans = []
-	for linhas in range(cols):
-		linha = []
-		for colunas in range(linhas):
-			linha.append(0)
+	for i in range(cols): #2
+		linha = [0] * lins #5
 		trans.append(linha)
 
-#inserir os valores da matriz nos seus lugares
-	for linha in m:
-		for coluna in linha:
+	for linha in range(cols):
+		for coluna in range(lins):
 			trans[linha][coluna] = m[coluna][linha]
 
 	return trans
 
-
+#OK!
 def get_tamlins(m):
 
-	return len[m]
+	return len(m)
 
+#OK!
 def get_tamcols(m):
-#retorna a quantidade de colunas da mat
+
 	return len(m[0])
+
 
 def salva_mat(m, filename):
 
-	lin = len(m[0])
-	col = len(m)
+	lin = len(m)
+	col = len(m[0])
 
 
 	arq = open(filename, 'w')
+	
 
 	for linhas in range(lin):
 		for colunas in range(col):
-			arq.write('%5d' % m[linhas][colunas], ' ', end='')
+
+			arq.write(f"{m[linhas][colunas]} ")
 		arq.write('\n')
 	arq.close()
 
 
 def carrega_mat(filename):
-	arq.open(filename, 'r')
+	arq = open(filename, 'r')
 
 	linhas = arq.readlines()
-	mat = linhas.strip().split(" ")
+	mat = []
+	for linha in linhas:
+		lin = linha.strip().split(" ")
+		mat.append(lin)
 
+	arq.close()
 	return mat
-
-def setElem(m, valor, linh, col):
-
-	m[linh][col] = valor
-
-	return m
-
 
 
